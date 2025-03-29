@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parts & Pricing - Feroze Mobile Repair</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .parts-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .parts-hero h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .parts-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .parts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .part-card {
+            position: relative;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+
+        .part-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .part-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .part-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .part-badge.original {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .part-badge.non-original {
+            background: #f1c40f;
+            color: #2c3e50;
+        }
+
+        .part-content {
+            padding: 2rem;
+        }
+
+        .part-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .part-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .part-specs {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .part-specs li {
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .part-specs i {
+            color: #3498db;
+        }
+
+        .part-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .brand-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .brand-btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .brand-btn:hover,
+        .brand-btn.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .part-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .part-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .part-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .part-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .part-features li {
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .part-features i {
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .parts-hero h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        .brand-tabs {
+            padding: 2rem;
+            text-align: center;
+            background: white;
+            margin-top: 80px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            background: #f5f5f5;
+            color: #2c3e50;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .part-card {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .part-card.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .tab-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        .part-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .option {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .option .part-badge {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+        }
+
+        .option p {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option .part-features {
+            margin-bottom: 0;
+        }
+
+        .part-card {
+            padding: 1.5rem;
+        }
+
+        .part-card img {
+            margin-bottom: 1.5rem;
+        }
+
+        .part-card h3 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .part-card .btn {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Feroze Mobile Repair</h1>
+        <p>Professional Mobile Repair Services</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="repair.html">Repair Services</a></li>
+                <li><a href="parts.html">Parts & Pricing</a></li>
+                <li><a href="software.html">Software Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="parts-hero">
+        <h1>Parts & Pricing</h1>
+        <p>High-quality parts for all mobile devices</p>
+    </section>
+
+    <section class="brand-tabs">
+        <div class="tab-buttons">
+            <button class="tab-btn active" data-brand="iphone">iPhone</button>
+            <button class="tab-btn" data-brand="samsung">Samsung</button>
+            <button class="tab-btn" data-brand="other">Other Brands</button>
+        </div>
+    </section>
+
+    <section class="parts-grid">
+        <!-- iPhone Parts -->
+        <div class="part-card" data-brand="iphone">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Screen">
+            <h3>iPhone Screen</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original quality display replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Perfect color match</li>
+                        <li><i class="fas fa-check"></i> Touch ID compatible</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket display</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good quality</li>
+                        <li><i class="fas fa-check"></i> Touch sensitive</li>
+                        <li><i class="fas fa-check"></i> Color accurate</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="iphone">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Battery">
+            <h3>iPhone Battery</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original battery replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Long-lasting</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket battery</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Extended life</li>
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Safety certified</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="iphone">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Camera">
+            <h3>iPhone Camera</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original camera module replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Auto-focus</li>
+                        <li><i class="fas fa-check"></i> Night mode</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket camera</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good quality</li>
+                        <li><i class="fas fa-check"></i> Auto-focus</li>
+                        <li><i class="fas fa-check"></i> HD quality</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="iphone">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Charging Port">
+            <h3>iPhone Charging Port</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original charging port replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Data transfer</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket charging port</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Data transfer</li>
+                        <li><i class="fas fa-check"></i> Durable</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="iphone">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Speaker">
+            <h3>iPhone Speaker</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original speaker replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Clear sound</li>
+                        <li><i class="fas fa-check"></i> Bass support</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket speaker</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good sound quality</li>
+                        <li><i class="fas fa-check"></i> Clear voice</li>
+                        <li><i class="fas fa-check"></i> Bass support</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="iphone">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Home Button">
+            <h3>iPhone Home Button</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original home button replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Touch ID compatible</li>
+                        <li><i class="fas fa-check"></i> Perfect fit</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket home button</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good quality</li>
+                        <li><i class="fas fa-check"></i> Responsive</li>
+                        <li><i class="fas fa-check"></i> Perfect fit</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <!-- Samsung Parts -->
+        <div class="part-card" data-brand="samsung">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Screen">
+            <h3>Samsung Screen</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original quality display replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Perfect color match</li>
+                        <li><i class="fas fa-check"></i> Touch sensitive</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket display</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good quality</li>
+                        <li><i class="fas fa-check"></i> Touch sensitive</li>
+                        <li><i class="fas fa-check"></i> Color accurate</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="samsung">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Battery">
+            <h3>Samsung Battery</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original battery replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Long-lasting</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket battery</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Extended life</li>
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Safety certified</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="samsung">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Camera">
+            <h3>Samsung Camera</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original camera module replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Auto-focus</li>
+                        <li><i class="fas fa-check"></i> Night mode</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket camera</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good quality</li>
+                        <li><i class="fas fa-check"></i> Auto-focus</li>
+                        <li><i class="fas fa-check"></i> HD quality</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="samsung">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Charging Port">
+            <h3>Samsung Charging Port</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original charging port replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Data transfer</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket charging port</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Data transfer</li>
+                        <li><i class="fas fa-check"></i> Durable</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="samsung">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Speaker">
+            <h3>Samsung Speaker</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original speaker replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Clear sound</li>
+                        <li><i class="fas fa-check"></i> Bass support</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket speaker</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good sound quality</li>
+                        <li><i class="fas fa-check"></i> Clear voice</li>
+                        <li><i class="fas fa-check"></i> Bass support</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="samsung">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Home Button">
+            <h3>Samsung Home Button</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original home button replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Fingerprint compatible</li>
+                        <li><i class="fas fa-check"></i> Perfect fit</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket home button</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good quality</li>
+                        <li><i class="fas fa-check"></i> Responsive</li>
+                        <li><i class="fas fa-check"></i> Perfect fit</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <!-- Other Brands Parts -->
+        <div class="part-card" data-brand="other">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Other Brands Screen">
+            <h3>Other Brands Screen</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original quality display replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Perfect color match</li>
+                        <li><i class="fas fa-check"></i> Touch sensitive</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket display</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good quality</li>
+                        <li><i class="fas fa-check"></i> Touch sensitive</li>
+                        <li><i class="fas fa-check"></i> Color accurate</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="other">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Other Brands Battery">
+            <h3>Other Brands Battery</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original battery replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Long-lasting</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket battery</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Extended life</li>
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Safety certified</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="other">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Other Brands Camera">
+            <h3>Other Brands Camera</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original camera module replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Auto-focus</li>
+                        <li><i class="fas fa-check"></i> Night mode</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket camera</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good quality</li>
+                        <li><i class="fas fa-check"></i> Auto-focus</li>
+                        <li><i class="fas fa-check"></i> HD quality</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="other">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Other Brands Charging Port">
+            <h3>Other Brands Charging Port</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original charging port replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Data transfer</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket charging port</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> Data transfer</li>
+                        <li><i class="fas fa-check"></i> Durable</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="other">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Other Brands Speaker">
+            <h3>Other Brands Speaker</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original speaker replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Clear sound</li>
+                        <li><i class="fas fa-check"></i> Bass support</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket speaker</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good sound quality</li>
+                        <li><i class="fas fa-check"></i> Clear voice</li>
+                        <li><i class="fas fa-check"></i> Bass support</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+
+        <div class="part-card" data-brand="other">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Other Brands Home Button">
+            <h3>Other Brands Home Button</h3>
+            <div class="part-options">
+                <div class="option original">
+                    <div class="part-badge original">Original</div>
+                    <p>Original home button replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                        <li><i class="fas fa-check"></i> Fingerprint compatible</li>
+                        <li><i class="fas fa-check"></i> Perfect fit</li>
+                    </ul>
+                </div>
+                <div class="option non-original">
+                    <div class="part-badge non-original">Non-Original</div>
+                    <p>High-quality aftermarket home button</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Good quality</li>
+                        <li><i class="fas fa-check"></i> Responsive</li>
+                        <li><i class="fas fa-check"></i> Perfect fit</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Feroze Mobile Repair. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const partCards = document.querySelectorAll('.part-card');
+
+            function showBrand(brand) {
+                partCards.forEach(card => {
+                    if (card.dataset.brand === brand) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.classList.add('active'), 10);
+                    } else {
+                        card.classList.remove('active');
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    showBrand(button.dataset.brand);
+                });
+            });
+
+            // Show iPhone parts by default
+            showBrand('iphone');
+        });
+    </script>
+</body>
+</html> 

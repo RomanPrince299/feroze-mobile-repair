@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repair Services - Feroze Mobile Repair</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .repair-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .repair-hero h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .repair-services {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .repair-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .repair-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .repair-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .repair-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .repair-content {
+            padding: 2rem;
+        }
+
+        .repair-content h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .repair-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .repair-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .repair-features li {
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .repair-features i {
+            color: #3498db;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .repair-hero h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        .service-item {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover .service-image img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Feroze Mobile Repair</h1>
+        <p>Professional Mobile Repair Services</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="repair.html">Repair Services</a></li>
+                <li><a href="parts.html">Parts & Pricing</a></li>
+                <li><a href="software.html">Software Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="repair-hero">
+        <h1>Our Repair Services</h1>
+        <p>Professional repair solutions for all your mobile devices</p>
+    </section>
+
+    <section class="repair-services">
+        <div class="service-grid">
+            <div class="service-item">
+                <div class="service-badge">Popular</div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Screen Repair">
+                </div>
+                <i class="fas fa-mobile-alt service-icon"></i>
+                <h3>Screen Repair</h3>
+                <p>Professional screen replacement service</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Original quality screens</li>
+                    <li><i class="fas fa-check"></i> Touch sensitivity</li>
+                    <li><i class="fas fa-check"></i> Color accuracy</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+            </div>
+
+            <div class="service-item">
+                <div class="service-badge">Essential</div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Battery Replacement">
+                </div>
+                <i class="fas fa-battery-full service-icon"></i>
+                <h3>Battery Replacement</h3>
+                <p>Long-lasting battery replacement</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Extended battery life</li>
+                    <li><i class="fas fa-check"></i> Fast charging support</li>
+                    <li><i class="fas fa-check"></i> Safety certified</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+            </div>
+
+            <div class="service-item">
+                <div class="service-badge">Expert</div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Camera Repair">
+                </div>
+                <i class="fas fa-camera service-icon"></i>
+                <h3>Camera Repair</h3>
+                <p>Professional camera module replacement</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Auto-focus repair</li>
+                    <li><i class="fas fa-check"></i> Lens replacement</li>
+                    <li><i class="fas fa-check"></i> Night mode fix</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+            </div>
+
+            <div class="service-item">
+                <div class="service-badge">Advanced</div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Water Damage Repair">
+                </div>
+                <i class="fas fa-tint service-icon"></i>
+                <h3>Water Damage Repair</h3>
+                <p>Professional water damage treatment</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Corrosion removal</li>
+                    <li><i class="fas fa-check"></i> Component cleaning</li>
+                    <li><i class="fas fa-check"></i> Water resistance</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Feroze Mobile Repair. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
