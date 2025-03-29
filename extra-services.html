@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extra Services - Feroze Mobile Repair</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .service-item {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin: 1rem 0;
+        }
+
+        .service-item h3 {
+            color: #333;
+            margin: 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .service-item p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .features-list {
+            text-align: left;
+            margin: 1.5rem 0;
+            padding-left: 1rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features-list i {
+            color: #3498db;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">FEROZE MOBILE REPAIR</div>
+        <p>Professional Mobile Repair Services</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="repair.html">Repair Services</a></li>
+                <li><a href="parts.html">Parts & Pricing</a></li>
+                <li><a href="software.html">Software Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="extra-services.html">Extra Services</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="services-container">
+        <div class="service-grid">
+            <div class="service-item">
+                <div class="service-badge">Basic</div>
+                <i class="fas fa-laptop service-icon"></i>
+                <h3>Basic Website</h3>
+                <p>Perfect for small businesses and personal websites</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Responsive Design</li>
+                    <li><i class="fas fa-check"></i> 5 Pages</li>
+                    <li><i class="fas fa-check"></i> Contact Form</li>
+                    <li><i class="fas fa-check"></i> Basic SEO</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Get Quote</a>
+            </div>
+
+            <div class="service-item">
+                <div class="service-badge">Professional</div>
+                <i class="fas fa-shopping-cart service-icon"></i>
+                <h3>E-Commerce Website</h3>
+                <p>Complete online store solution</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Online Store Setup</li>
+                    <li><i class="fas fa-check"></i> Payment Integration</li>
+                    <li><i class="fas fa-check"></i> Product Management</li>
+                    <li><i class="fas fa-check"></i> Advanced SEO</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Get Quote</a>
+            </div>
+
+            <div class="service-item">
+                <div class="service-badge">Custom</div>
+                <i class="fas fa-code service-icon"></i>
+                <h3>Custom Development</h3>
+                <p>Tailored solutions for your specific needs</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Custom Features</li>
+                    <li><i class="fas fa-check"></i> API Integration</li>
+                    <li><i class="fas fa-check"></i> Database Design</li>
+                    <li><i class="fas fa-check"></i> Scalable Solution</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Get Quote</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
