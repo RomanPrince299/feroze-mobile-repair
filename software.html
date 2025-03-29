@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Services - Feroze Mobile Repair</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .software-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .software-hero h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .software-services {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-item h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-item p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features i {
+            color: #3498db;
+        }
+
+        .service-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .software-hero h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Feroze Mobile Repair</h1>
+        <p>Professional Mobile Repair Services</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="repair.html">Repair Services</a></li>
+                <li><a href="parts.html">Parts & Pricing</a></li>
+                <li><a href="software.html">Software Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="software-hero">
+        <h1>Unlocking Services</h1>
+        <p>Professional unlocking solutions for all mobile devices</p>
+    </section>
+
+    <section class="software-services">
+        <div class="service-grid">
+            <div class="service-item">
+                <div class="service-badge">iPhone</div>
+                <i class="fab fa-apple service-icon"></i>
+                <h3>iPhone Unlocking</h3>
+                <p>Carrier unlocking for all iPhone models</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> All iPhone models supported</li>
+                    <li><i class="fas fa-check"></i> Carrier unlock</li>
+                    <li><i class="fas fa-check"></i> iCloud unlock available</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+            </div>
+
+            <div class="service-item">
+                <div class="service-badge">Samsung</div>
+                <i class="fab fa-android service-icon"></i>
+                <h3>Samsung Unlocking</h3>
+                <p>Network unlocking for Samsung devices</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> All Samsung models</li>
+                    <li><i class="fas fa-check"></i> Network unlock</li>
+                    <li><i class="fas fa-check"></i> FRP removal</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+            </div>
+
+            <div class="service-item">
+                <div class="service-badge">Other Brands</div>
+                <i class="fas fa-mobile-alt service-icon"></i>
+                <h3>Other Brands</h3>
+                <p>Unlocking service for all other brands</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Xiaomi, Huawei, Oppo</li>
+                    <li><i class="fas fa-check"></i> Vivo, OnePlus, Realme</li>
+                    <li><i class="fas fa-check"></i> All other Android brands</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+            </div>
+
+            <div class="service-item">
+                <div class="service-badge">Special</div>
+                <i class="fas fa-unlock service-icon"></i>
+                <h3>Special Unlocking</h3>
+                <p>Advanced unlocking solutions</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Google account removal</li>
+                    <li><i class="fas fa-check"></i> Pattern/PIN unlock</li>
+                    <li><i class="fas fa-check"></i> Network carrier unlock</li>
+                </ul>
+                <a href="https://wa.me/919635022445" class="btn">Contact on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Feroze Mobile Repair. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
