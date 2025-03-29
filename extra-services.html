@@ -75,6 +75,9 @@
             overflow: hidden;
             max-width: 400px;
             margin: 0 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-item:hover {
@@ -110,12 +113,14 @@
             color: #666;
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            flex-grow: 1;
         }
 
         .features-list {
             text-align: left;
             margin: 1.5rem 0;
             padding-left: 1rem;
+            flex-grow: 1;
         }
 
         .features-list li {
@@ -143,6 +148,7 @@
             font-weight: 500;
             width: 100%;
             text-align: center;
+            margin-top: auto;
         }
 
         .btn:hover {
