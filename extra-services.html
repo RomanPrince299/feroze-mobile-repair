@@ -60,6 +60,8 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .service-item {
@@ -71,7 +73,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            max-width: 350px;
+            max-width: 400px;
             margin: 0 auto;
         }
 
@@ -139,6 +141,8 @@
             text-decoration: none;
             display: inline-block;
             font-weight: 500;
+            width: 100%;
+            text-align: center;
         }
 
         .btn:hover {
@@ -156,6 +160,11 @@
             .service-grid {
                 grid-template-columns: 1fr;
                 padding: 1rem;
+                gap: 1.5rem;
+            }
+
+            .service-item {
+                max-width: 100%;
             }
         }
     </style>
