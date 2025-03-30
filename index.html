@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SmartPhone Clinic - Professional Mobile Repair Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gradient-1: linear-gradient(135deg, #3b82f6, #2563eb);
+            --gradient-2: linear-gradient(135deg, #ec4899, #db2777);
+            --gradient-3: linear-gradient(135deg, #6366f1, #4f46e5);
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-dark: rgba(0, 0, 0, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,447 +28,508 @@
         }
 
         body {
-            background-color: #f5f5f5;
+            background: var(--dark);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+            color: var(--light);
             line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
         header {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
+            z-index: 100;
+            padding: 1rem;
         }
 
-        header:hover {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
+        .brand {
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
-        header h1 {
+        .brand h1 {
             font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            animation: shimmer 2s infinite;
         }
 
-        nav {
-            margin-top: 1rem;
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
         }
 
-        nav ul {
-            list-style: none;
+        .nav-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 0.5rem;
         }
 
-        nav a {
-            color: white;
+        .nav-links a {
+            color: var(--light);
             text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        .hero-content {
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: slideUp 1s ease-out;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            animation: slideUp 1s ease-out 0.3s;
-            opacity: 0;
-            animation-fill-mode: forwards;
-        }
-
-        .services {
-            padding: 4rem 2rem;
-            background: #f8f9fa;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-item {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .service-item::before {
+        .nav-links a:hover {
+            background: var(--gradient-1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .hero {
+            margin-top: 120px;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 40px;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease 0.2s;
+        }
+
+        .services {
+            padding: 4rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--gradient-2);
+            color: white;
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+            animation: pulse 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+            z-index: 1;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.9);
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+        .service-content {
+            padding: 2.5rem;
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            transform: translateZ(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .service-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .service-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-1);
+            border-radius: 3px;
+        }
+
+        .service-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+        }
+
+        .service-features li i {
+            color: #60a5fa;
+            font-size: 1.2rem;
+            background: rgba(96, 165, 250, 0.1);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #3498db, #2ecc71);
-        }
-
-        .service-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3498db, #2ecc71);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-
-        .service-icon i {
-            font-size: 2rem;
-            color: white;
-        }
-
-        .service-item h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .service-item p {
-            color: #666;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .service-features li {
-            color: #666;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .service-features i {
-            color: #2ecc71;
-        }
-
-        .service-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .service-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-        }
-
-        .service-btn i {
-            font-size: 1.2rem;
-        }
-
-        .contact {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: #2ecc71;
-        }
-
-        .contact-item p {
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 2rem auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 1rem;
-            margin: 0.8rem 0;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            background: white;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 1rem;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
         }
 
         .btn:hover {
-            background: linear-gradient(135deg, #c0392b, #e74c3c);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn:hover::before {
+            transform: translateX(100%);
         }
 
         footer {
-            background-color: #34495e;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
             color: white;
+            padding: 4rem 2rem;
             text-align: center;
-            padding: 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        footer p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        @keyframes slideUp {
+        @keyframes fadeInUp {
             from {
-                transform: translateY(30px);
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
-                transform: translateY(0);
                 opacity: 1;
+                transform: translateY(0);
             }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
+            .brand h1 {
+                font-size: 2.2rem;
             }
-            
-            .hero-content h1 {
+
+            .hero h1 {
                 font-size: 2.5rem;
             }
-            
-            .service-grid {
+
+            .services-grid {
                 grid-template-columns: 1fr;
+                padding: 1.5rem;
             }
 
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+            .service-card {
+                margin: 0 1rem;
             }
 
-            .contact-item {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
+            .service-title {
+                font-size: 1.8rem;
+            }
+
+            .nav-links a {
+                padding: 0.6rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                margin-top: 160px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .service-image {
+                height: 220px;
+            }
+
+            .service-content {
+                padding: 2rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>SmartPhone Clinic</h1>
-        <p>Professional Mobile Repair Services</p>
+        <div class="brand">
+            <h1>SmartPhone Clinic</h1>
+            <p>Professional Mobile Repair Services</p>
+        </div>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="repair.html">Repair Services</a></li>
-                <li><a href="parts.html">Parts & Pricing</a></li>
-                <li><a href="software.html">Software Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="extra-services.html">Extra Services</a></li>
-            </ul>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="repair.html">Repair Services</a>
+                <a href="parts.html">Parts & Pricing</a>
+                <a href="software.html">Software Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="extra-services.html">Extra Services</a>
+            </div>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Expert Mobile Repair Services</h1>
-            <p>Fast, Reliable, and Affordable</p>
-            <div class="hero-buttons">
-                <a href="repair.html" class="btn">Our Services</a>
-                <a href="contact.html" class="btn">Contact Us</a>
-            </div>
-        </div>
+        <h1>Expert Mobile Repair Services</h1>
+        <p>Professional repairs for all smartphone brands with genuine parts and warranty</p>
     </section>
 
     <section class="services">
-        <div class="service-grid">
-            <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-mobile-alt"></i>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-badge">Popular</div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Screen Repair">
                 </div>
-                <h3>Screen Repair</h3>
-                <p>Professional screen replacement for all mobile brands</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Original quality screens</li>
-                    <li><i class="fas fa-check"></i> Touch sensitivity</li>
-                    <li><i class="fas fa-check"></i> Color accuracy</li>
-                    <li><i class="fas fa-clock"></i> Repair Time: 7-8 days</li>
-                </ul>
-                <a href="https://wa.me/919635022445" class="service-btn">
-                    <i class="fab fa-whatsapp"></i>
-                    Contact on WhatsApp
-                </a>
+                <div class="service-content">
+                    <i class="fas fa-mobile-alt service-icon"></i>
+                    <h3 class="service-title">Screen Repair</h3>
+                    <p class="service-description">Professional screen replacement service with genuine parts</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Original Display</li>
+                        <li><i class="fas fa-check"></i> Touch Sensitivity</li>
+                        <li><i class="fas fa-check"></i> 6 Months Warranty</li>
+                    </ul>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20screen%20repair%20service.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
             </div>
 
-            <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-battery-full"></i>
+            <div class="service-card">
+                <div class="service-badge">Essential</div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Battery Replacement">
                 </div>
-                <h3>Battery Replacement</h3>
-                <p>Long-lasting battery replacement services</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Extended battery life</li>
-                    <li><i class="fas fa-check"></i> Fast charging support</li>
-                    <li><i class="fas fa-check"></i> Safety certified</li>
-                    <li><i class="fas fa-clock"></i> Repair Time: 7-8 days</li>
-                </ul>
-                <a href="https://wa.me/919635022445" class="service-btn">
-                    <i class="fab fa-whatsapp"></i>
-                    Contact on WhatsApp
-                </a>
+                <div class="service-content">
+                    <i class="fas fa-battery-full service-icon"></i>
+                    <h3 class="service-title">Battery Service</h3>
+                    <p class="service-description">Battery replacement with genuine parts and testing</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Original Battery</li>
+                        <li><i class="fas fa-check"></i> Full Capacity</li>
+                        <li><i class="fas fa-check"></i> Safe Installation</li>
+                    </ul>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20battery%20replacement%20service.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
             </div>
 
-            <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-tools"></i>
+            <div class="service-card">
+                <div class="service-badge">Advanced</div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Software Update">
                 </div>
-                <h3>Hardware Repair</h3>
-                <p>Expert hardware repair and maintenance</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Component replacement</li>
-                    <li><i class="fas fa-check"></i> Water damage repair</li>
-                    <li><i class="fas fa-check"></i> Performance optimization</li>
-                    <li><i class="fas fa-clock"></i> Repair Time: 7-8 days</li>
-                </ul>
-                <a href="https://wa.me/919635022445" class="service-btn">
-                    <i class="fab fa-whatsapp"></i>
-                    Contact on WhatsApp
-                </a>
+                <div class="service-content">
+                    <i class="fas fa-cog service-icon"></i>
+                    <h3 class="service-title">Software Fix</h3>
+                    <p class="service-description">Software updates, unlocking, and troubleshooting</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> OS Updates</li>
+                        <li><i class="fas fa-check"></i> Data Recovery</li>
+                        <li><i class="fas fa-check"></i> Bug Fixes</li>
+                    </ul>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20software%20repair%20service.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <section class="contact">
-        <h2>Contact Us</h2>
-        <div class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <input type="tel" placeholder="Your Phone Number" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-            <button class="btn">Send Message</button>
+            <div class="service-card">
+                <div class="service-badge">Premium</div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Motherboard Repair">
+                </div>
+                <div class="service-content">
+                    <i class="fas fa-microchip service-icon"></i>
+                    <h3 class="service-title">Motherboard Repair</h3>
+                    <p class="service-description">Expert motherboard repair and component replacement</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Chip Level Service</li>
+                        <li><i class="fas fa-check"></i> Water Damage Fix</li>
+                        <li><i class="fas fa-check"></i> Circuit Repair</li>
+                    </ul>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20motherboard%20repair%20service.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2024 SmartPhone Clinic. All rights reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.9rem;">Website developed by Feroze Alam</p>
+        <p>Professional Mobile Repair Services</p>
     </footer>
 </body>
 </html> 
