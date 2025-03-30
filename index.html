@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="Professional Mobile Repair Services">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SmartPhone Clinic">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
     <title>SmartPhone Clinic - Professional Mobile Repair Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
     <style>
         :root {
             --primary: #2563eb;
@@ -312,6 +332,47 @@
             .hero p {
                 font-size: 1rem;
             }
+        }
+
+        /* Mobile App Specific Styles */
+        @media all and (display-mode: standalone) {
+            header {
+                padding-top: env(safe-area-inset-top);
+            }
+
+            footer {
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+
+            .nav-links {
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+
+            .hero {
+                padding-top: calc(6rem + env(safe-area-inset-top));
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) {
+            .nav-links a:active {
+                transform: scale(0.98);
+            }
+
+            .btn:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Prevent Text Selection */
+        .btn, .nav-links a {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        /* Pull to Refresh Indicator */
+        body {
+            overscroll-behavior-y: contain;
         }
     </style>
 </head>
