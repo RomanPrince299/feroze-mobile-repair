@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Repair Services - SmartPhone Clinic</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+            --secondary-gradient: linear-gradient(135deg, #FF416C, #FF4B2B);
+            --text-gradient: linear-gradient(135deg, #2193b0, #6dd5ed);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --hover-transform: translateY(-8px);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,20 +25,26 @@
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            background: #0F2027;
+            background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
             line-height: 1.6;
+            color: #ffffff;
             overflow-x: hidden;
-            width: 100%;
-            position: relative;
-            color: #2c3e50;
+            min-height: 100vh;
+        }
+
+        .glass-effect {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: var(--glass-border);
+            border-radius: 20px;
         }
 
         header {
-            background: linear-gradient(135deg, #1a2a6c, #2a5298, #4e94ca);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 1rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -37,37 +53,38 @@
         }
 
         header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         header p {
-            font-size: 1rem;
-            opacity: 0.9;
+            font-size: 1.1rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
         }
 
         nav {
-            margin-top: 1rem;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            padding: 0 0.5rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-        }
-
-        nav::-webkit-scrollbar {
-            display: none;
+            margin-top: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
+            flex-wrap: wrap;
             padding: 0.5rem;
         }
 
@@ -75,194 +92,290 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav a:hover {
-            background: rgba(255,255,255,0.2);
+            background: var(--primary-gradient);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
         }
 
         .repair-hero {
-            margin-top: 140px;
-            padding: 2rem 1rem;
+            margin-top: 180px;
+            padding: 3rem 1rem;
             text-align: center;
-            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .repair-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            margin: 140px 1rem 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 30px;
+            z-index: -1;
         }
 
         .repair-hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #1a2a6c, #4e94ca);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--text-gradient);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease;
         }
 
         .repair-hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
+            font-size: 1.2rem;
+            max-width: 700px;
             margin: 0 auto;
-            color: #546e7a;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease 0.2s;
         }
 
         .service-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            padding: 1rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .service-item {
-            background: white;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .service-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            transform: var(--hover-transform);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .service-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: linear-gradient(135deg, #ff6b6b, #ee5253);
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--secondary-gradient);
             color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 25px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
             font-size: 0.9rem;
             font-weight: 500;
             z-index: 1;
-            box-shadow: 0 4px 15px rgba(238,82,83,0.2);
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.3);
+            animation: pulse 2s infinite;
         }
 
         .service-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             overflow: hidden;
             position: relative;
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
         }
 
         .service-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .service-item:hover .service-image img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .service-content {
-            padding: 1.5rem;
+            padding: 2rem;
+            position: relative;
         }
 
         .service-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #4e94ca;
-            background: linear-gradient(135deg, #1a2a6c, #4e94ca);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
+            transform: translateZ(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover .service-icon {
+            transform: scale(1.2) rotate(10deg);
         }
 
         .service-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
             font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .service-description {
-            font-size: 1rem;
-            color: #546e7a;
-            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
         .service-features {
             list-style: none;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .service-features li {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
-            color: #546e7a;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
         }
 
         .service-features li i {
-            color: #4e94ca;
-            font-size: 1.1rem;
+            color: #00c6ff;
+            font-size: 1.2rem;
         }
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, #1a2a6c, #4e94ca);
+            padding: 1rem 2rem;
+            background: var(--primary-gradient);
             color: white;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 30px;
             font-weight: 500;
-            transition: all 0.3s ease;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(74,148,202,0.2);
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74,148,202,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 198, 255, 0.4);
+        }
+
+        .btn:hover::before {
+            transform: translateX(100%);
         }
 
         footer {
-            background: linear-gradient(135deg, #1a2a6c, #2a5298);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
             color: white;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
             text-align: center;
-            margin-top: 3rem;
-            border-radius: 20px 20px 0 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         footer p {
             opacity: 0.9;
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
-        @media (min-width: 768px) {
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-                padding: 2rem;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @media (min-width: 1024px) {
-            .service-grid {
-                grid-template-columns: repeat(4, 1fr);
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
             }
         }
 
-        @media (max-width: 360px) {
+        @media (max-width: 768px) {
             header h1 {
+                font-size: 2rem;
+            }
+
+            .repair-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .service-item {
+                margin: 0 1rem;
+            }
+
+            .service-title {
                 font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav a {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
             }
 
             .repair-hero h1 {
@@ -270,11 +383,16 @@
             }
 
             .service-image {
-                height: 160px;
+                height: 200px;
             }
 
-            .service-title {
-                font-size: 1.3rem;
+            .service-content {
+                padding: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
             }
         }
     </style>
