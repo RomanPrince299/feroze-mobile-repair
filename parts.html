@@ -170,10 +170,15 @@
 
         .tab-content {
             display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
         }
 
         .tab-content.active {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .parts-grid {
@@ -318,17 +323,13 @@
             <button class="tab-btn" onclick="openTab('others', event)">Other Brands</button>
         </div>
 
+        <!-- iPhone Parts -->
         <div id="iphone" class="tab-content active">
             <div class="parts-grid">
-                <!-- iPhone Display -->
                 <div class="part-card">
                     <div class="part-content">
                         <i class="fas fa-mobile-alt part-icon"></i>
                         <h3 class="part-title">iPhone Display</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
                         <ul class="part-features">
                             <li><i class="fas fa-check"></i> OLED/LCD Screens</li>
                             <li><i class="fas fa-check"></i> True Tone Support</li>
@@ -339,15 +340,10 @@
                     </div>
                 </div>
 
-                <!-- iPhone Battery -->
                 <div class="part-card">
                     <div class="part-content">
                         <i class="fas fa-battery-full part-icon"></i>
                         <h3 class="part-title">iPhone Battery</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
                         <ul class="part-features">
                             <li><i class="fas fa-check"></i> Original Capacity</li>
                             <li><i class="fas fa-check"></i> Health Monitoring</li>
@@ -358,15 +354,10 @@
                     </div>
                 </div>
 
-                <!-- iPhone Back Glass -->
                 <div class="part-card">
                     <div class="part-content">
-                        <i class="fas fa-square part-icon"></i>
+                        <i class="fas fa-mobile part-icon"></i>
                         <h3 class="part-title">iPhone Back Glass</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
                         <ul class="part-features">
                             <li><i class="fas fa-check"></i> Original Quality</li>
                             <li><i class="fas fa-check"></i> Perfect Fit</li>
@@ -376,160 +367,80 @@
                         <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
                     </div>
                 </div>
-
-                <!-- iPhone Camera -->
-                <div class="part-card">
-                    <div class="part-content">
-                        <i class="fas fa-camera part-icon"></i>
-                        <h3 class="part-title">iPhone Camera</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
-                        <ul class="part-features">
-                            <li><i class="fas fa-check"></i> Front Camera</li>
-                            <li><i class="fas fa-check"></i> Rear Camera Set</li>
-                            <li><i class="fas fa-check"></i> Face ID Sensors</li>
-                            <li><i class="fas fa-check"></i> True Depth</li>
-                        </ul>
-                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
-                    </div>
-                </div>
             </div>
         </div>
 
+        <!-- Samsung Parts -->
         <div id="samsung" class="tab-content">
             <div class="parts-grid">
-                <!-- Samsung Display -->
                 <div class="part-card">
                     <div class="part-content">
                         <i class="fas fa-mobile-alt part-icon"></i>
                         <h3 class="part-title">Samsung Display</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
                         <ul class="part-features">
                             <li><i class="fas fa-check"></i> AMOLED Screens</li>
-                            <li><i class="fas fa-check"></i> Edge Display</li>
-                            <li><i class="fas fa-check"></i> Touch Sensitivity</li>
+                            <li><i class="fas fa-check"></i> HDR Support</li>
+                            <li><i class="fas fa-check"></i> Touch Response</li>
                             <li><i class="fas fa-check"></i> Original Quality</li>
                         </ul>
                         <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
                     </div>
                 </div>
 
-                <!-- Samsung Battery -->
                 <div class="part-card">
                     <div class="part-content">
                         <i class="fas fa-battery-full part-icon"></i>
                         <h3 class="part-title">Samsung Battery</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
                         <ul class="part-features">
                             <li><i class="fas fa-check"></i> Original Capacity</li>
                             <li><i class="fas fa-check"></i> Fast Charging</li>
                             <li><i class="fas fa-check"></i> Safe Installation</li>
-                            <li><i class="fas fa-check"></i> Warranty Available</li>
+                            <li><i class="fas fa-check"></i> Long Life</li>
                         </ul>
                         <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
                     </div>
                 </div>
 
-                <!-- Samsung Back Panel -->
                 <div class="part-card">
                     <div class="part-content">
-                        <i class="fas fa-square part-icon"></i>
+                        <i class="fas fa-mobile part-icon"></i>
                         <h3 class="part-title">Samsung Back Panel</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
                         <ul class="part-features">
                             <li><i class="fas fa-check"></i> Original Quality</li>
                             <li><i class="fas fa-check"></i> Perfect Fit</li>
-                            <li><i class="fas fa-check"></i> Multiple Colors</li>
+                            <li><i class="fas fa-check"></i> Wireless Charging</li>
                             <li><i class="fas fa-check"></i> Camera Protection</li>
                         </ul>
                         <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
                     </div>
                 </div>
-
-                <!-- Samsung Camera -->
-                <div class="part-card">
-                    <div class="part-content">
-                        <i class="fas fa-camera part-icon"></i>
-                        <h3 class="part-title">Samsung Camera</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
-                        <ul class="part-features">
-                            <li><i class="fas fa-check"></i> Front Camera</li>
-                            <li><i class="fas fa-check"></i> Rear Camera Set</li>
-                            <li><i class="fas fa-check"></i> Wide Angle</li>
-                            <li><i class="fas fa-check"></i> Zoom Lens</li>
-                        </ul>
-                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
-                    </div>
-                </div>
             </div>
         </div>
 
+        <!-- Other Brands Parts -->
         <div id="others" class="tab-content">
             <div class="parts-grid">
-                <!-- OnePlus Parts -->
                 <div class="part-card">
                     <div class="part-content">
                         <i class="fas fa-mobile-alt part-icon"></i>
                         <h3 class="part-title">OnePlus Parts</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
                         <ul class="part-features">
-                            <li><i class="fas fa-check"></i> Display Assembly</li>
-                            <li><i class="fas fa-check"></i> Battery</li>
+                            <li><i class="fas fa-check"></i> Display Replacement</li>
+                            <li><i class="fas fa-check"></i> Battery Replacement</li>
                             <li><i class="fas fa-check"></i> Back Panel</li>
-                            <li><i class="fas fa-check"></i> Camera Modules</li>
+                            <li><i class="fas fa-check"></i> Camera Module</li>
                         </ul>
                         <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
                     </div>
                 </div>
 
-                <!-- Xiaomi Parts -->
                 <div class="part-card">
                     <div class="part-content">
                         <i class="fas fa-mobile-alt part-icon"></i>
                         <h3 class="part-title">Xiaomi Parts</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
                         <ul class="part-features">
                             <li><i class="fas fa-check"></i> LCD/AMOLED Display</li>
-                            <li><i class="fas fa-check"></i> Battery</li>
-                            <li><i class="fas fa-check"></i> Camera Set</li>
-                            <li><i class="fas fa-check"></i> Charging Board</li>
-                        </ul>
-                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
-                    </div>
-                </div>
-
-                <!-- Oppo Parts -->
-                <div class="part-card">
-                    <div class="part-content">
-                        <i class="fas fa-mobile-alt part-icon"></i>
-                        <h3 class="part-title">Oppo Parts</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
-                        <ul class="part-features">
-                            <li><i class="fas fa-check"></i> Screen Assembly</li>
-                            <li><i class="fas fa-check"></i> Battery</li>
+                            <li><i class="fas fa-check"></i> Battery Replacement</li>
                             <li><i class="fas fa-check"></i> Back Cover</li>
                             <li><i class="fas fa-check"></i> Camera Module</li>
                         </ul>
@@ -537,20 +448,15 @@
                     </div>
                 </div>
 
-                <!-- Vivo Parts -->
                 <div class="part-card">
                     <div class="part-content">
                         <i class="fas fa-mobile-alt part-icon"></i>
-                        <h3 class="part-title">Vivo Parts</h3>
-                        <div class="part-types">
-                            <span class="part-type original">Original</span>
-                            <span class="part-type non-original">Non-Original</span>
-                        </div>
+                        <h3 class="part-title">OPPO/Vivo Parts</h3>
                         <ul class="part-features">
-                            <li><i class="fas fa-check"></i> Display Unit</li>
-                            <li><i class="fas fa-check"></i> Battery</li>
-                            <li><i class="fas fa-check"></i> Charging Port</li>
-                            <li><i class="fas fa-check"></i> Camera Setup</li>
+                            <li><i class="fas fa-check"></i> Screen Replacement</li>
+                            <li><i class="fas fa-check"></i> Battery Service</li>
+                            <li><i class="fas fa-check"></i> Back Panel</li>
+                            <li><i class="fas fa-check"></i> Camera Parts</li>
                         </ul>
                         <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
                     </div>
@@ -569,6 +475,7 @@
             // Hide all tab contents
             var tabContents = document.getElementsByClassName('tab-content');
             for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = 'none';
                 tabContents[i].classList.remove('active');
             }
 
@@ -579,10 +486,21 @@
             }
 
             // Show the selected tab content
-            document.getElementById(tabName).classList.add('active');
+            var selectedTab = document.getElementById(tabName);
+            selectedTab.style.display = 'block';
+            setTimeout(() => {
+                selectedTab.classList.add('active');
+            }, 10);
 
             // Add active class to the clicked button
             event.target.classList.add('active');
+        }
+
+        // Show iPhone tab by default when page loads
+        window.onload = function() {
+            document.getElementById('iphone').style.display = 'block';
+            document.getElementById('iphone').classList.add('active');
+            document.querySelector('.tab-btn').classList.add('active');
         }
     </script>
 </body>
