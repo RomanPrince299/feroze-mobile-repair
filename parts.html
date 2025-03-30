@@ -107,48 +107,57 @@
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
         }
 
-        .parts-section {
+        .parts-hero {
             margin-top: 120px;
-            padding: 2rem 0;
-        }
-
-        .section-title {
+            padding: 4rem 2rem;
             text-align: center;
-            margin-bottom: 3rem;
             position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 40px;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .parts-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease;
         }
 
-        .section-title p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.1rem;
-            max-width: 600px;
+        .parts-hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
             margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease 0.2s;
         }
 
         .parts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .part-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
             overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         .part-card:hover {
@@ -157,161 +166,277 @@
             border-color: rgba(255, 255, 255, 0.2);
         }
 
+        .part-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--gradient-2);
+            color: white;
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+            animation: pulse 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .part-image {
-            height: 200px;
+            width: 100%;
+            height: 280px;
             overflow: hidden;
             position: relative;
+        }
+
+        .part-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+            z-index: 1;
         }
 
         .part-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.9);
         }
 
         .part-card:hover .part-image img {
             transform: scale(1.1);
-        }
-
-        .part-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--gradient-2);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            z-index: 1;
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+            filter: brightness(1.1);
         }
 
         .part-content {
-            padding: 1.5rem;
-            background: var(--glass-dark);
+            padding: 2.5rem;
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
         }
 
-        .part-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .part-description {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .part-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .part-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .part-features i {
-            color: var(--secondary);
-            font-size: 1.1rem;
-        }
-
-        .part-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
+        .part-icon {
+            font-size: 3rem;
             margin-bottom: 1.5rem;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
+            transform: translateZ(0);
+            transition: transform 0.3s ease;
         }
 
-        .btn-order {
+        .part-card:hover .part-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .part-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .part-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-1);
+            border-radius: 3px;
+        }
+
+        .part-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .part-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .part-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+        }
+
+        .part-features li i {
+            color: #60a5fa;
+            font-size: 1.2rem;
+            background: rgba(96, 165, 250, 0.1);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .part-price {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
             display: inline-block;
-            width: 100%;
-            padding: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
             background: var(--gradient-1);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.3s ease;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            text-align: center;
         }
 
-        .btn-order::before {
+        .btn::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                120deg,
-                transparent,
-                rgba(255, 255, 255, 0.3),
-                transparent
-            );
-            transition: 0.5s;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
         }
 
-        .btn-order:hover::before {
-            left: 100%;
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
         }
 
-        .btn-order:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+        .btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
         @media (max-width: 768px) {
             .brand h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
-            .nav-links a {
-                padding: 0.4rem 1rem;
-                font-size: 0.9rem;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
+            .parts-hero h1 {
+                font-size: 2.5rem;
             }
 
             .parts-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .brand h1 {
-                font-size: 1.8rem;
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
             }
 
             .part-card {
                 margin: 0 1rem;
             }
 
+            .part-title {
+                font-size: 1.8rem;
+            }
+
+            .nav-links a {
+                padding: 0.6rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .parts-hero {
+                padding: 3rem 1rem;
+                margin-top: 160px;
+            }
+
+            .parts-hero h1 {
+                font-size: 2rem;
+            }
+
             .part-image {
-                height: 180px;
+                height: 220px;
+            }
+
+            .part-content {
+                padding: 2rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
             }
         }
     </style>
@@ -334,40 +459,135 @@
         </nav>
     </header>
 
-    <main class="parts-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Parts & Pricing</h2>
-                <p>High-quality replacement parts for all major smartphone brands</p>
+    <section class="parts-hero">
+        <h1>Parts & Pricing</h1>
+        <p>High-quality replacement parts for all major smartphone brands</p>
+    </section>
+
+    <section class="parts">
+        <div class="parts-grid">
+            <!-- Samsung Parts -->
+            <div class="part-card">
+                <div class="part-badge">Samsung</div>
+                <div class="part-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Screen">
+                </div>
+                <div class="part-content">
+                    <i class="fas fa-mobile-alt part-icon"></i>
+                    <h3 class="part-title">Samsung Screen</h3>
+                    <p class="part-description">Original quality Samsung display replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> AMOLED Display</li>
+                        <li><i class="fas fa-check"></i> Touch sensitivity</li>
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                    </ul>
+                    <div class="part-price">Starting from ₹4999</div>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Samsung%20screen%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
             </div>
 
-            <div class="parts-grid">
-                <!-- iPhone Parts -->
-                <div class="part-card">
-                    <div class="part-badge">Premium</div>
-                    <div class="part-image">
-                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Screen">
-                    </div>
-                    <div class="part-content">
-                        <h3 class="part-title">iPhone Screen</h3>
-                        <p class="part-description">Original quality iPhone display replacement</p>
-                        <ul class="part-features">
-                            <li><i class="fas fa-check-circle"></i> True Tone support</li>
-                            <li><i class="fas fa-check-circle"></i> 3D Touch capability</li>
-                            <li><i class="fas fa-check-circle"></i> Original color accuracy</li>
-                        </ul>
-                        <div class="part-price">Starting from ₹2999</div>
-                        <a href="https://wa.me/919635022445" class="btn-order">Order Now</a>
-                    </div>
+            <div class="part-card">
+                <div class="part-badge">Samsung</div>
+                <div class="part-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Battery">
                 </div>
+                <div class="part-content">
+                    <i class="fas fa-battery-full part-icon"></i>
+                    <h3 class="part-title">Samsung Battery</h3>
+                    <p class="part-description">Genuine Samsung battery replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Long lasting</li>
+                        <li><i class="fas fa-check"></i> Fast charging</li>
+                        <li><i class="fas fa-check"></i> 6 months warranty</li>
+                    </ul>
+                    <div class="part-price">Starting from ₹1999</div>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Samsung%20battery%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
+            </div>
 
-                <!-- Add more part cards here -->
+            <!-- iPhone Parts -->
+            <div class="part-card">
+                <div class="part-badge">iPhone</div>
+                <div class="part-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Screen">
+                </div>
+                <div class="part-content">
+                    <i class="fas fa-mobile-alt part-icon"></i>
+                    <h3 class="part-title">iPhone Screen</h3>
+                    <p class="part-description">Original quality iPhone display replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> True Tone support</li>
+                        <li><i class="fas fa-check"></i> 3D Touch capability</li>
+                        <li><i class="fas fa-check"></i> Original color accuracy</li>
+                    </ul>
+                    <div class="part-price">Starting from ₹2999</div>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20iPhone%20screen%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="part-card">
+                <div class="part-badge">iPhone</div>
+                <div class="part-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Battery">
+                </div>
+                <div class="part-content">
+                    <i class="fas fa-battery-full part-icon"></i>
+                    <h3 class="part-title">iPhone Battery</h3>
+                    <p class="part-description">Genuine iPhone battery replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Original capacity</li>
+                        <li><i class="fas fa-check"></i> Battery health support</li>
+                        <li><i class="fas fa-check"></i> 6 months warranty</li>
+                    </ul>
+                    <div class="part-price">Starting from ₹2499</div>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20iPhone%20battery%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Other Brand Parts -->
+            <div class="part-card">
+                <div class="part-badge">OnePlus</div>
+                <div class="part-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="OnePlus Screen">
+                </div>
+                <div class="part-content">
+                    <i class="fas fa-mobile-alt part-icon"></i>
+                    <h3 class="part-title">OnePlus Screen</h3>
+                    <p class="part-description">Original quality OnePlus display replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> AMOLED Display</li>
+                        <li><i class="fas fa-check"></i> 90Hz/120Hz support</li>
+                        <li><i class="fas fa-check"></i> HDR10+ compatible</li>
+                    </ul>
+                    <div class="part-price">Starting from ₹3999</div>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20OnePlus%20screen%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="part-card">
+                <div class="part-badge">Xiaomi</div>
+                <div class="part-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Xiaomi Screen">
+                </div>
+                <div class="part-content">
+                    <i class="fas fa-mobile-alt part-icon"></i>
+                    <h3 class="part-title">Xiaomi Screen</h3>
+                    <p class="part-description">Original quality Xiaomi display replacement</p>
+                    <ul class="part-features">
+                        <li><i class="fas fa-check"></i> Full HD+ Display</li>
+                        <li><i class="fas fa-check"></i> Touch sensitivity</li>
+                        <li><i class="fas fa-check"></i> Original quality</li>
+                    </ul>
+                    <div class="part-price">Starting from ₹2499</div>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Xiaomi%20screen%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
 
     <footer>
         <p>&copy; 2024 SmartPhone Clinic. All rights reserved.</p>
+        <p>Professional Mobile Repair Services</p>
     </footer>
 </body>
 </html> 
