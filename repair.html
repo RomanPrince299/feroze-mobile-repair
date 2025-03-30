@@ -166,6 +166,20 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        .repair-time {
+            font-size: 1.2rem;
+            color: var(--light);
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background: var(--glass);
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease 0.4s;
+            position: relative;
+            z-index: 1;
+        }
+
         .service-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -466,6 +480,11 @@
                 padding: 0.8rem 1.8rem;
                 font-size: 1rem;
             }
+
+            .repair-time {
+                font-size: 1rem;
+                padding: 0.6rem 1.5rem;
+            }
         }
     </style>
 </head>
@@ -490,6 +509,7 @@
     <section class="repair-hero">
         <h1>Our Repair Services</h1>
         <p>Professional repair solutions for all your mobile devices</p>
+        <p class="repair-time">Maximum repair time: 7-8 days</p>
     </section>
 
     <section class="repair-services">
