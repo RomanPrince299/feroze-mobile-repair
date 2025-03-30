@@ -160,26 +160,49 @@
             bottom: 0;
             width: 100%;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         footer p {
             opacity: 0.9;
-            margin-bottom: 0.5rem;
         }
 
         .designer-credit {
-            margin-top: 1.5rem;
-            font-size: 1.1rem;
+            margin-top: 1rem;
+            font-size: 1.2rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            color: #3b82f6;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .designer-credit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
             background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .designer-credit::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: var(--gradient-1);
         }
 
         @media (max-width: 768px) {
@@ -264,7 +287,7 @@
     <footer>
         <p>&copy; 2024 SmartPhone Clinic. All rights reserved.</p>
         <p>Professional Mobile Repair Services</p>
-        <p class="designer-credit">WEBSITE DESIGNED BY FEROZE</p>
+        <div class="designer-credit">WEBSITE DESIGNED BY FEROZE</div>
     </footer>
 </body>
 </html> 
