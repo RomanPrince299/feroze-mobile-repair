@@ -107,336 +107,155 @@
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
         }
 
-        .parts-hero {
+        .parts-tabs {
             margin-top: 120px;
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 40px;
-            margin-bottom: 3rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .parts-hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+        .tab-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .tab-btn.active {
             background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-            letter-spacing: 1px;
-            animation: fadeInUp 1s ease;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            transform: translateY(-2px);
         }
 
-        .parts-hero p {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.9);
-            animation: fadeInUp 1s ease 0.2s;
+        .tab-btn:hover {
+            background: var(--gradient-1);
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .parts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            padding: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
         }
 
         .part-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border-radius: 30px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             position: relative;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         .part-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             border-color: rgba(255, 255, 255, 0.2);
         }
 
-        .part-badge {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: var(--gradient-2);
-            color: white;
-            padding: 0.7rem 1.4rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            z-index: 1;
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
-            animation: pulse 2s infinite;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .part-image {
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .part-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
-            z-index: 1;
-        }
-
-        .part-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: brightness(0.9);
-        }
-
-        .part-card:hover .part-image img {
-            transform: scale(1.1);
-            filter: brightness(1.1);
-        }
-
         .part-content {
-            padding: 2.5rem;
-            position: relative;
-            background: rgba(0, 0, 0, 0.2);
+            padding: 2rem;
         }
 
         .part-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block;
-            transform: translateZ(0);
-            transition: transform 0.3s ease;
-        }
-
-        .part-card:hover .part-icon {
-            transform: scale(1.2) rotate(10deg);
         }
 
         .part-title {
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: white;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .part-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--gradient-1);
-            border-radius: 3px;
-        }
-
-        .part-description {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
         }
 
         .part-features {
             list-style: none;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .part-features li {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            padding: 0.5rem 0;
         }
 
-        .part-features li i {
+        .part-features i {
             color: #60a5fa;
             font-size: 1.2rem;
-            background: rgba(96, 165, 250, 0.1);
-            padding: 0.5rem;
-            border-radius: 50%;
-        }
-
-        .part-price {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-            display: inline-block;
         }
 
         .btn {
             display: inline-block;
-            padding: 1rem 2.5rem;
+            width: 100%;
+            padding: 1rem;
             background: var(--gradient-1);
             color: white;
             text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 10px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
             border: none;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
             text-transform: uppercase;
             letter-spacing: 1px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
         }
 
-        .btn:hover::before {
-            transform: translateX(100%);
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin-top: 6rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        footer p {
-            opacity: 0.9;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @media (max-width: 768px) {
-            .brand h1 {
-                font-size: 2.2rem;
+            .tab-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
             }
 
-            .parts-hero h1 {
-                font-size: 2.5rem;
+            .tab-btn {
+                width: 100%;
+                text-align: center;
             }
 
             .parts-grid {
                 grid-template-columns: 1fr;
-                padding: 1.5rem;
-            }
-
-            .part-card {
-                margin: 0 1rem;
-            }
-
-            .part-title {
-                font-size: 1.8rem;
-            }
-
-            .nav-links a {
-                padding: 0.6rem 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .brand h1 {
-                font-size: 2rem;
-            }
-
-            .nav-links a {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-
-            .parts-hero {
-                padding: 3rem 1rem;
-                margin-top: 160px;
-            }
-
-            .parts-hero h1 {
-                font-size: 2rem;
-            }
-
-            .part-image {
-                height: 220px;
-            }
-
-            .part-content {
-                padding: 2rem;
-            }
-
-            .btn {
-                padding: 0.8rem 1.8rem;
-                font-size: 1rem;
             }
         }
     </style>
@@ -459,127 +278,261 @@
         </nav>
     </header>
 
-    <section class="parts-hero">
-        <h1>Parts & Pricing</h1>
-        <p>High-quality replacement parts for all major smartphone brands</p>
-    </section>
+    <section class="parts-tabs">
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="openTab('iphone')">iPhone Parts</button>
+            <button class="tab-btn" onclick="openTab('samsung')">Samsung Parts</button>
+            <button class="tab-btn" onclick="openTab('others')">Other Brands</button>
+        </div>
 
-    <section class="parts">
-        <div class="parts-grid">
-            <!-- Samsung Parts -->
-            <div class="part-card">
-                <div class="part-badge">Samsung</div>
-                <div class="part-image">
-                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Screen">
+        <div id="iphone" class="tab-content active">
+            <div class="parts-grid">
+                <!-- iPhone Display Parts -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-mobile-alt part-icon"></i>
+                        <h3 class="part-title">iPhone Display</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> OLED/LCD Screens</li>
+                            <li><i class="fas fa-check"></i> True Tone Support</li>
+                            <li><i class="fas fa-check"></i> Touch Sensitivity</li>
+                            <li><i class="fas fa-check"></i> Original Quality</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
                 </div>
-                <div class="part-content">
-                    <i class="fas fa-mobile-alt part-icon"></i>
-                    <h3 class="part-title">Samsung Screen</h3>
-                    <p class="part-description">Original quality Samsung display replacement</p>
-                    <ul class="part-features">
-                        <li><i class="fas fa-check"></i> AMOLED Display</li>
-                        <li><i class="fas fa-check"></i> Touch sensitivity</li>
-                        <li><i class="fas fa-check"></i> Original quality</li>
-                    </ul>
-                    <div class="part-price">Starting from ₹4999</div>
-                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Samsung%20screen%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+
+                <!-- iPhone Battery -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-battery-full part-icon"></i>
+                        <h3 class="part-title">iPhone Battery</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Original Capacity</li>
+                            <li><i class="fas fa-check"></i> Health Monitoring</li>
+                            <li><i class="fas fa-check"></i> Fast Charging</li>
+                            <li><i class="fas fa-check"></i> Safe Installation</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
+                </div>
+
+                <!-- iPhone Back Glass -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-square part-icon"></i>
+                        <h3 class="part-title">iPhone Back Glass</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Original Quality</li>
+                            <li><i class="fas fa-check"></i> Perfect Fit</li>
+                            <li><i class="fas fa-check"></i> Wireless Charging</li>
+                            <li><i class="fas fa-check"></i> Camera Protection</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
+                </div>
+
+                <!-- iPhone Camera -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-camera part-icon"></i>
+                        <h3 class="part-title">iPhone Camera</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Front Camera</li>
+                            <li><i class="fas fa-check"></i> Rear Camera Set</li>
+                            <li><i class="fas fa-check"></i> Face ID Sensors</li>
+                            <li><i class="fas fa-check"></i> True Depth</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
+                </div>
+
+                <!-- iPhone Charging Port -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-bolt part-icon"></i>
+                        <h3 class="part-title">iPhone Charging Port</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Lightning Port</li>
+                            <li><i class="fas fa-check"></i> Audio Jack</li>
+                            <li><i class="fas fa-check"></i> Microphone</li>
+                            <li><i class="fas fa-check"></i> Speaker Assembly</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
+                </div>
+
+                <!-- iPhone Logic Board -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-microchip part-icon"></i>
+                        <h3 class="part-title">iPhone Logic Board</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Motherboard Repair</li>
+                            <li><i class="fas fa-check"></i> Chip Replacement</li>
+                            <li><i class="fas fa-check"></i> Water Damage Fix</li>
+                            <li><i class="fas fa-check"></i> Data Recovery</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="part-card">
-                <div class="part-badge">Samsung</div>
-                <div class="part-image">
-                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Battery">
+        <div id="samsung" class="tab-content">
+            <div class="parts-grid">
+                <!-- Samsung Display -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-mobile-alt part-icon"></i>
+                        <h3 class="part-title">Samsung Display</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> AMOLED Screens</li>
+                            <li><i class="fas fa-check"></i> Edge Display</li>
+                            <li><i class="fas fa-check"></i> Touch Sensitivity</li>
+                            <li><i class="fas fa-check"></i> Original Quality</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
                 </div>
-                <div class="part-content">
-                    <i class="fas fa-battery-full part-icon"></i>
-                    <h3 class="part-title">Samsung Battery</h3>
-                    <p class="part-description">Genuine Samsung battery replacement</p>
-                    <ul class="part-features">
-                        <li><i class="fas fa-check"></i> Long lasting</li>
-                        <li><i class="fas fa-check"></i> Fast charging</li>
-                        <li><i class="fas fa-check"></i> 6 months warranty</li>
-                    </ul>
-                    <div class="part-price">Starting from ₹1999</div>
-                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Samsung%20battery%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+
+                <!-- Samsung Battery -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-battery-full part-icon"></i>
+                        <h3 class="part-title">Samsung Battery</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Original Capacity</li>
+                            <li><i class="fas fa-check"></i> Fast Charging</li>
+                            <li><i class="fas fa-check"></i> Safe Installation</li>
+                            <li><i class="fas fa-check"></i> Warranty Available</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
+                </div>
+
+                <!-- Samsung Back Panel -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-square part-icon"></i>
+                        <h3 class="part-title">Samsung Back Panel</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Original Quality</li>
+                            <li><i class="fas fa-check"></i> Perfect Fit</li>
+                            <li><i class="fas fa-check"></i> Multiple Colors</li>
+                            <li><i class="fas fa-check"></i> Camera Protection</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
+                </div>
+
+                <!-- Samsung Camera -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-camera part-icon"></i>
+                        <h3 class="part-title">Samsung Camera</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Front Camera</li>
+                            <li><i class="fas fa-check"></i> Rear Camera Set</li>
+                            <li><i class="fas fa-check"></i> Wide Angle</li>
+                            <li><i class="fas fa-check"></i> Zoom Lens</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
+                </div>
+
+                <!-- Samsung Charging Port -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-bolt part-icon"></i>
+                        <h3 class="part-title">Samsung Charging Port</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> USB-C Port</li>
+                            <li><i class="fas fa-check"></i> Fast Charging</li>
+                            <li><i class="fas fa-check"></i> Audio Components</li>
+                            <li><i class="fas fa-check"></i> Water Resistance</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
+                </div>
+
+                <!-- Samsung Motherboard -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-microchip part-icon"></i>
+                        <h3 class="part-title">Samsung Motherboard</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Board Repair</li>
+                            <li><i class="fas fa-check"></i> Chip Replacement</li>
+                            <li><i class="fas fa-check"></i> Water Damage Fix</li>
+                            <li><i class="fas fa-check"></i> Network Issues</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- iPhone Parts -->
-            <div class="part-card">
-                <div class="part-badge">iPhone</div>
-                <div class="part-image">
-                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Screen">
+        <div id="others" class="tab-content">
+            <div class="parts-grid">
+                <!-- OnePlus Parts -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-mobile-alt part-icon"></i>
+                        <h3 class="part-title">OnePlus Parts</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Display Assembly</li>
+                            <li><i class="fas fa-check"></i> Battery</li>
+                            <li><i class="fas fa-check"></i> Back Panel</li>
+                            <li><i class="fas fa-check"></i> Camera Modules</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
                 </div>
-                <div class="part-content">
-                    <i class="fas fa-mobile-alt part-icon"></i>
-                    <h3 class="part-title">iPhone Screen</h3>
-                    <p class="part-description">Original quality iPhone display replacement</p>
-                    <ul class="part-features">
-                        <li><i class="fas fa-check"></i> True Tone support</li>
-                        <li><i class="fas fa-check"></i> 3D Touch capability</li>
-                        <li><i class="fas fa-check"></i> Original color accuracy</li>
-                    </ul>
-                    <div class="part-price">Starting from ₹2999</div>
-                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20iPhone%20screen%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
-                </div>
-            </div>
 
-            <div class="part-card">
-                <div class="part-badge">iPhone</div>
-                <div class="part-image">
-                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone Battery">
+                <!-- Xiaomi Parts -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-mobile-alt part-icon"></i>
+                        <h3 class="part-title">Xiaomi Parts</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> LCD/AMOLED Display</li>
+                            <li><i class="fas fa-check"></i> Battery</li>
+                            <li><i class="fas fa-check"></i> Camera Set</li>
+                            <li><i class="fas fa-check"></i> Charging Board</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
                 </div>
-                <div class="part-content">
-                    <i class="fas fa-battery-full part-icon"></i>
-                    <h3 class="part-title">iPhone Battery</h3>
-                    <p class="part-description">Genuine iPhone battery replacement</p>
-                    <ul class="part-features">
-                        <li><i class="fas fa-check"></i> Original capacity</li>
-                        <li><i class="fas fa-check"></i> Battery health support</li>
-                        <li><i class="fas fa-check"></i> 6 months warranty</li>
-                    </ul>
-                    <div class="part-price">Starting from ₹2499</div>
-                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20iPhone%20battery%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
-                </div>
-            </div>
 
-            <!-- Other Brand Parts -->
-            <div class="part-card">
-                <div class="part-badge">OnePlus</div>
-                <div class="part-image">
-                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="OnePlus Screen">
+                <!-- Oppo Parts -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-mobile-alt part-icon"></i>
+                        <h3 class="part-title">Oppo Parts</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Screen Assembly</li>
+                            <li><i class="fas fa-check"></i> Battery</li>
+                            <li><i class="fas fa-check"></i> Back Cover</li>
+                            <li><i class="fas fa-check"></i> Camera Module</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
                 </div>
-                <div class="part-content">
-                    <i class="fas fa-mobile-alt part-icon"></i>
-                    <h3 class="part-title">OnePlus Screen</h3>
-                    <p class="part-description">Original quality OnePlus display replacement</p>
-                    <ul class="part-features">
-                        <li><i class="fas fa-check"></i> AMOLED Display</li>
-                        <li><i class="fas fa-check"></i> 90Hz/120Hz support</li>
-                        <li><i class="fas fa-check"></i> HDR10+ compatible</li>
-                    </ul>
-                    <div class="part-price">Starting from ₹3999</div>
-                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20OnePlus%20screen%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
-                </div>
-            </div>
 
-            <div class="part-card">
-                <div class="part-badge">Xiaomi</div>
-                <div class="part-image">
-                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Xiaomi Screen">
-                </div>
-                <div class="part-content">
-                    <i class="fas fa-mobile-alt part-icon"></i>
-                    <h3 class="part-title">Xiaomi Screen</h3>
-                    <p class="part-description">Original quality Xiaomi display replacement</p>
-                    <ul class="part-features">
-                        <li><i class="fas fa-check"></i> Full HD+ Display</li>
-                        <li><i class="fas fa-check"></i> Touch sensitivity</li>
-                        <li><i class="fas fa-check"></i> Original quality</li>
-                    </ul>
-                    <div class="part-price">Starting from ₹2499</div>
-                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Xiaomi%20screen%20replacement.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                <!-- Vivo Parts -->
+                <div class="part-card">
+                    <div class="part-content">
+                        <i class="fas fa-mobile-alt part-icon"></i>
+                        <h3 class="part-title">Vivo Parts</h3>
+                        <ul class="part-features">
+                            <li><i class="fas fa-check"></i> Display Unit</li>
+                            <li><i class="fas fa-check"></i> Battery</li>
+                            <li><i class="fas fa-check"></i> Charging Port</li>
+                            <li><i class="fas fa-check"></i> Camera Setup</li>
+                        </ul>
+                        <a href="https://wa.me/919635022445" class="btn">Contact for Details</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -589,5 +542,27 @@
         <p>&copy; 2024 SmartPhone Clinic. All rights reserved.</p>
         <p>Professional Mobile Repair Services</p>
     </footer>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+
+            // Remove active class from all buttons
+            var tabButtons = document.getElementsByClassName('tab-btn');
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+
+            // Show the selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to the clicked button
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html> 
