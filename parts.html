@@ -123,22 +123,29 @@
             flex-wrap: wrap;
             justify-content: center;
             position: relative;
-            padding: 0.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .tab-btn {
             padding: 1rem 2.5rem;
             background: var(--glass);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--light);
             border-radius: 50px;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s ease;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             position: relative;
             overflow: hidden;
             outline: none;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .tab-btn::before {
@@ -166,6 +173,7 @@
         .tab-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .tab-content {
@@ -265,13 +273,15 @@
 
         @media (max-width: 768px) {
             .tab-buttons {
+                padding: 1rem;
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 1rem;
             }
 
             .tab-btn {
                 width: 100%;
-                text-align: center;
+                min-width: unset;
+                padding: 1rem;
             }
 
             .parts-grid {
@@ -472,7 +482,7 @@
 
     <script>
         function openTab(tabName, event) {
-            // Hide all tab contents
+            // Hide all tab contents first
             var tabContents = document.getElementsByClassName('tab-content');
             for (var i = 0; i < tabContents.length; i++) {
                 tabContents[i].style.display = 'none';
@@ -485,22 +495,40 @@
                 tabButtons[i].classList.remove('active');
             }
 
-            // Show the selected tab content
+            // Show the selected tab content with animation
             var selectedTab = document.getElementById(tabName);
             selectedTab.style.display = 'block';
+            selectedTab.style.opacity = '0';
+            selectedTab.style.transform = 'translateY(20px)';
+            
+            // Force reflow
+            selectedTab.offsetHeight;
+            
+            // Add active class and animate
             setTimeout(() => {
                 selectedTab.classList.add('active');
+                selectedTab.style.opacity = '1';
+                selectedTab.style.transform = 'translateY(0)';
             }, 10);
 
-            // Add active class to the clicked button
+            // Add active class to the clicked button with animation
             event.target.classList.add('active');
         }
 
         // Show iPhone tab by default when page loads
         window.onload = function() {
-            document.getElementById('iphone').style.display = 'block';
-            document.getElementById('iphone').classList.add('active');
-            document.querySelector('.tab-btn').classList.add('active');
+            var iphoneTab = document.getElementById('iphone');
+            var defaultButton = document.querySelector('.tab-btn');
+            
+            iphoneTab.style.display = 'block';
+            iphoneTab.classList.add('active');
+            defaultButton.classList.add('active');
+            
+            // Initial animation
+            setTimeout(() => {
+                iphoneTab.style.opacity = '1';
+                iphoneTab.style.transform = 'translateY(0)';
+            }, 100);
         }
     </script>
 </body>
