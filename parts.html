@@ -313,9 +313,9 @@
 
     <section class="parts-tabs">
         <div class="tab-buttons">
-            <button class="tab-btn active" onclick="openTab('iphone')">iPhone Parts</button>
-            <button class="tab-btn" onclick="openTab('samsung')">Samsung Parts</button>
-            <button class="tab-btn" onclick="openTab('others')">Other Brands</button>
+            <button class="tab-btn active" onclick="openTab('iphone', event)">iPhone Parts</button>
+            <button class="tab-btn" onclick="openTab('samsung', event)">Samsung Parts</button>
+            <button class="tab-btn" onclick="openTab('others', event)">Other Brands</button>
         </div>
 
         <div id="iphone" class="tab-content active">
@@ -565,7 +565,7 @@
     </footer>
 
     <script>
-        function openTab(tabName) {
+        function openTab(tabName, event) {
             // Hide all tab contents
             var tabContents = document.getElementsByClassName('tab-content');
             for (var i = 0; i < tabContents.length; i++) {
@@ -582,7 +582,7 @@
             document.getElementById(tabName).classList.add('active');
 
             // Add active class to the clicked button
-            event.currentTarget.classList.add('active');
+            event.target.classList.add('active');
         }
     </script>
 </body>
