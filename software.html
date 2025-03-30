@@ -2,11 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Software Services - SmartPhone Clinic</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dark-theme.css">
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gradient-1: linear-gradient(135deg, #3b82f6, #2563eb);
+            --gradient-2: linear-gradient(135deg, #ec4899, #db2777);
+            --gradient-3: linear-gradient(135deg, #6366f1, #4f46e5);
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-dark: rgba(0, 0, 0, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,280 +29,508 @@
         }
 
         body {
-            background-color: #f5f5f5;
+            background: var(--dark);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+            color: var(--light);
             line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
         header {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
+            z-index: 100;
+            padding: 1rem;
         }
 
-        nav {
-            margin-top: 1rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .software-hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 40vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+        .brand {
             text-align: center;
-            margin-top: 80px;
+            margin-bottom: 1rem;
         }
 
-        .software-hero h1 {
-            font-size: 3rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        .brand h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            animation: shimmer 2s infinite;
         }
 
-        .software-services {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
         }
 
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 0.5rem;
         }
 
-        .service-item {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .service-item::before {
+        .nav-links a:hover {
+            background: var(--gradient-1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .software-hero {
+            margin-top: 120px;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 40px;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .software-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .software-hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease 0.2s;
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .software-item {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .software-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .software-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--gradient-2);
+            color: white;
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+            animation: pulse 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .software-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .software-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+            z-index: 1;
+        }
+
+        .software-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.9);
+        }
+
+        .software-item:hover .software-image img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+        .software-content {
+            padding: 2.5rem;
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .software-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            transform: translateZ(0);
+            transition: transform 0.3s ease;
+        }
+
+        .software-item:hover .software-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .software-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .software-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-1);
+            border-radius: 3px;
+        }
+
+        .software-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .software-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .software-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+        }
+
+        .software-features li i {
+            color: #60a5fa;
+            font-size: 1.2rem;
+            background: rgba(96, 165, 250, 0.1);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #3498db, #2ecc71);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .service-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .service-item:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            color: #3498db;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-item h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .service-item p {
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-features li {
-            color: #666;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .service-features i {
-            color: #3498db;
-        }
-
-        .service-price {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-        }
-
-        .price {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 500;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
         }
 
         .btn:hover {
-            background: linear-gradient(135deg, #c0392b, #e74c3c);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
         }
 
-        .service-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: #e74c3c;
+        .btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
         @media (max-width: 768px) {
+            .brand h1 {
+                font-size: 2.2rem;
+            }
+
+            .software-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .software-grid {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+
+            .software-item {
+                margin: 0 1rem;
+            }
+
+            .software-title {
+                font-size: 1.8rem;
+            }
+
+            .nav-links a {
+                padding: 0.6rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .software-hero {
+                padding: 3rem 1rem;
+                margin-top: 160px;
+            }
+
             .software-hero h1 {
                 font-size: 2rem;
             }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
+
+            .software-image {
+                height: 220px;
+            }
+
+            .software-content {
+                padding: 2rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>SmartPhone Clinic</h1>
-        <p>Professional Mobile Repair Services</p>
+        <div class="brand">
+            <h1>SmartPhone Clinic</h1>
+            <p>Professional Mobile Repair Services</p>
+        </div>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="repair.html">Repair Services</a></li>
-                <li><a href="parts.html">Parts & Pricing</a></li>
-                <li><a href="software.html">Software Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="extra-services.html">Extra Services</a></li>
-            </ul>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="repair.html">Repair Services</a>
+                <a href="parts.html">Parts & Pricing</a>
+                <a href="software.html">Software Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="extra-services.html">Extra Services</a>
+            </div>
         </nav>
     </header>
 
     <section class="software-hero">
-        <h1>Unlocking Services</h1>
-        <p>Professional unlocking solutions for all mobile devices</p>
+        <h1>Software Services</h1>
+        <p>Professional software solutions for all your mobile devices</p>
     </section>
 
     <section class="software-services">
-        <div class="service-grid">
-            <div class="service-item">
-                <div class="service-badge">iPhone</div>
-                <i class="fab fa-apple service-icon"></i>
-                <h3>iPhone Unlocking</h3>
-                <p>Carrier unlocking for all iPhone models</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> All iPhone models supported</li>
-                    <li><i class="fas fa-check"></i> Carrier unlock</li>
-                    <li><i class="fas fa-check"></i> iCloud unlock available</li>
-                </ul>
-                <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20iPhone%20Unlocking%20service.%20Please%20provide%20details%20and%20pricing." class="btn">Contact on WhatsApp</a>
+        <div class="software-grid">
+            <div class="software-item">
+                <div class="software-badge">Popular</div>
+                <div class="software-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="OS Update">
+                </div>
+                <div class="software-content">
+                    <i class="fas fa-mobile-alt software-icon"></i>
+                    <h3 class="software-title">OS Updates</h3>
+                    <p class="software-description">Latest operating system updates and upgrades</p>
+                    <ul class="software-features">
+                        <li><i class="fas fa-check"></i> Latest OS versions</li>
+                        <li><i class="fas fa-check"></i> Security patches</li>
+                        <li><i class="fas fa-check"></i> Performance optimization</li>
+                    </ul>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20OS%20Update%20service.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
             </div>
 
-            <div class="service-item">
-                <div class="service-badge">Samsung</div>
-                <i class="fab fa-android service-icon"></i>
-                <h3>Samsung Unlocking</h3>
-                <p>Network unlocking for Samsung devices</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> All Samsung models</li>
-                    <li><i class="fas fa-check"></i> Network unlock</li>
-                    <li><i class="fas fa-check"></i> FRP removal</li>
-                </ul>
-                <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Samsung%20Unlocking%20service.%20Please%20provide%20details%20and%20pricing." class="btn">Contact on WhatsApp</a>
+            <div class="software-item">
+                <div class="software-badge">Essential</div>
+                <div class="software-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Data Recovery">
+                </div>
+                <div class="software-content">
+                    <i class="fas fa-database software-icon"></i>
+                    <h3 class="software-title">Data Recovery</h3>
+                    <p class="software-description">Professional data recovery services</p>
+                    <ul class="software-features">
+                        <li><i class="fas fa-check"></i> Photos & videos</li>
+                        <li><i class="fas fa-check"></i> Messages & contacts</li>
+                        <li><i class="fas fa-check"></i> Documents & files</li>
+                    </ul>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Data%20Recovery%20service.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
             </div>
 
-            <div class="service-item">
-                <div class="service-badge">Other Brands</div>
-                <i class="fas fa-mobile-alt service-icon"></i>
-                <h3>Other Brands</h3>
-                <p>Unlocking service for all other brands</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Xiaomi, Huawei, Oppo</li>
-                    <li><i class="fas fa-check"></i> Vivo, OnePlus, Realme</li>
-                    <li><i class="fas fa-check"></i> All other Android brands</li>
-                </ul>
-                <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Other%20Brand%20Unlocking%20service.%20Please%20provide%20details%20and%20pricing." class="btn">Contact on WhatsApp</a>
+            <div class="software-item">
+                <div class="software-badge">Advanced</div>
+                <div class="software-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Unlocking">
+                </div>
+                <div class="software-content">
+                    <i class="fas fa-unlock-alt software-icon"></i>
+                    <h3 class="software-title">Phone Unlocking</h3>
+                    <p class="software-description">Safe and legal phone unlocking services</p>
+                    <ul class="software-features">
+                        <li><i class="fas fa-check"></i> Network unlocking</li>
+                        <li><i class="fas fa-check"></i> Pattern/PIN removal</li>
+                        <li><i class="fas fa-check"></i> iCloud unlocking</li>
+                    </ul>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Phone%20Unlocking%20service.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
             </div>
 
-            <div class="service-item">
-                <div class="service-badge">Special</div>
-                <i class="fas fa-unlock service-icon"></i>
-                <h3>Special Unlocking</h3>
-                <p>Advanced unlocking solutions</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Google account removal</li>
-                    <li><i class="fas fa-check"></i> Pattern/PIN unlock</li>
-                    <li><i class="fas fa-check"></i> Network carrier unlock</li>
-                </ul>
-                <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Special%20Unlocking%20service%20(Google/Pattern/Network).%20Please%20provide%20details%20and%20pricing." class="btn">Contact on WhatsApp</a>
+            <div class="software-item">
+                <div class="software-badge">Security</div>
+                <div class="software-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Security">
+                </div>
+                <div class="software-content">
+                    <i class="fas fa-shield-alt software-icon"></i>
+                    <h3 class="software-title">Security Services</h3>
+                    <p class="software-description">Comprehensive mobile security solutions</p>
+                    <ul class="software-features">
+                        <li><i class="fas fa-check"></i> Virus removal</li>
+                        <li><i class="fas fa-check"></i> Security audits</li>
+                        <li><i class="fas fa-check"></i> Anti-theft setup</li>
+                    </ul>
+                    <a href="https://wa.me/919635022445?text=Hi,%20I%20need%20Security%20Services.%20Please%20provide%20details." class="btn">Contact on WhatsApp</a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2024 SmartPhone Clinic. All rights reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.9rem;">Website developed by Feroze Alam</p>
+        <p>Professional Mobile Repair Services</p>
     </footer>
 </body>
 </html> 
